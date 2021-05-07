@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>switch</title>
+	<style> #switch{background : lightyellow;} </style>
+	
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('#switch').click(function(){
+				if($('#switch').html() == 'On'){
+					$('#switch').html('Off');
+					$('#switch').css('backgroundColor', 'lightgray');
+					$('#light').attr('src', '../image/lighton.png');
+				}
+				else{
+					$('#switch').html('On');
+					$('#switch').css('backgroundColor', 'lightyello');
+					$('#light').attr('src', '../image/lightoff.png');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h3>전구 스위치 On/Off</h3>
+		<img id = "light" src = "../image/lightoff.png" style = "width:70px">
+	<button id = "switch">On</button>
+</body>
+</html>
