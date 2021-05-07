@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>attr</title>
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('img').attr('width', function(index){
+				return (index + 1)* 100;
+			});
+		});
+	</script>
+</head>
+<body>
+	<img src = "../image/cat.jpg"/>
+	<img src = "../image/dog.jpg"/>
+	<img src = "../image/panda.jpg"/>
+</body>
+</html>
