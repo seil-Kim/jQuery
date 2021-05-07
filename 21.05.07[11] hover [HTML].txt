@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hover</title>
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('img').hover(
+				function(){$('img').attr('src', '../image/playbtn_press.png')},
+				function(){$('img').attr('src', '../image/playbtn_normal.png')}
+			);
+		});
+	</script>
+</head>
+<body>
+	<p><img src = "../image/playbtn_normal.png"></p>
+</body>
+</html>
