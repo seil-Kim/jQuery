@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>InputForm</title>
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	<script src = './jquery.cookie.js'></script>
+</head>
+
+<body>
+<form action="result.html" method=post name="fm" onsubmit="return onCheck()">
+<table border="1">
+<caption>회원 가입 정보</caption>
+<tr> <td>이름</td> <td><input type="text" name="name" size=20/></td> </tr>
+<tr> <td>암호</td> <td><input type="password" name="pw" size=20/></td> </tr>
+<tr> <td>전화번호</td> 
+<td> <select name="tel1">
+<option selected>010</option>
+<option>02</option>
+<option>053</option></select>
+-<input name="tel2" size="4" maxlength=4>
+-<input name="tel3" size="4" maxlength=4></td> </tr>
+<tr> <td>직업</td>
+<td> <select size="1" name="job">
+<option value="자영업" selected>자영업</option>
+<option value="회사원">회사원</option>
+<option value="무직">무직</option> 
+</select> </td></tr>
+<tr> <td>성별</td> 
+<td> <input type="radio" name="gender" value="male" checked id="r1"/><label for="r1">남자</label>
+<input type="radio" name="gender" value="female" id="r2"/><label for="r2">여자</label></td>
+<tr> <td>취미</td>
+<td> <input type="checkbox" name="play" value="바둑" id="s1"/><label for="s1">바둑</label>
+<input type="checkbox" name="play" value="게임" id="s2"/><label for="s2">게임</label>
+<input type="checkbox" name="play" value="낚시" id="s3"/><label for="s3">낚시</label>
+<input type="checkbox" name="play" value="독서" id="s4"/><label for="s4">독서</label></td></tr>
+<tr> <td>자기 소개</td> 
+<td> <textarea rows="5" cols="50" name="Intro">자기를 소개하는 글을 쓰세요.</textarea> </td></tr>
+<tr> <td colspan="2" align=center> 
+<button type="submit">등록하기</button>
+<button type="reset">취소하기</button>
+</td></tr>
+</table>
+</form>
+
+<script>
+function onCheck(){
+	if(!fm.name.value){
+		alert("이름을 입력하세요");
+		fm.name.focus();
+		return false;
+	}
+	if(!fm.pw.value){
+		alert('암호를 입력하세요');
+		fm.pw.focus();
+		return false;
+	}
+	if(!fm.tel2.value||!fm.tel3.value){
+		alert('전화번호를 입력하세요');
+		fm.tel2.focus();
+		return false;
+	}
+	if(!fm.job.value){
+		alert('직업을 선택하세요');
+		return false;
+	}
+	if(!(fm.gender[0].checked||fm.gender[1].checked)){
+		alert('성별을 선택하세요');
+		return false;
+	}
+	var obj=fm.play;
+	if(!(obj[0].checked||obj[1].checked||obj[2].checked||obj[3].checked)){
+		alert('취미를 하나 이상 선택하세요');
+		return false;
+	}
+	if(!fm.Intro.value){
+		alert('자기소개를 입력하세요');
+		fm.Intro.focus();
+		return false;
+	}
+	var val = fm.name.value;
+	$.cookie('name', val, {expires : 2});
+	return true;
+}
+</script>
+</body>
+</html>
