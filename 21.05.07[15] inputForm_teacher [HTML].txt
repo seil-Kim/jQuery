@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title> 회원정보 입력 양식 </title>
+  <script src='https://code.jquery.com/jquery-3.1.1.js'></script>    
+  <script src='./jquery.cookie.js'></script>
+  <style>
+   	 body,html{width:100%, height:100%}  
+
+	 table{
+		position:absolute; left:50%; top:50%;
+		transform:translate(-50%, -50%);
+	 }
+	 td:nth-child(odd) {
+		background:#EAEAEA;
+	 }
+	 td:nth-child(even) {
+		background:rgba(32,52,58,.2);
+	 }
+	 #last{
+	    background:white;
+	}
+ </style>
+ <script>
+	  function oncheck(){
+		if(!fm.name.value){
+		  alert('이름을 입력하세요');
+		  fm.name.focus();
+		  return false;
+		  
+		}
+		if(!fm.password.value){
+		  alert('암호를 입력하세요');
+		  fm.password.focus();
+		  return false;
+		}
+		if(!fm.tel2.value || !fm.tel3.value){
+		  alert('전화번호를 입력하세요');
+		  fm.tel2.focus();
+		  return false;
+		}
+ 		if(!(fm.gender[0].checked||fm.gender[1].checked)){
+ 		  alert('성별을 선택하세요');
+ 		  return false;
+ 		}
+		var obj=fm.hobby;
+		if(!(obj[0].checked||obj[1].checked||obj[2].checked||obj[3].checked)) {
+  		  alert('취미를 하나 이상 선택하세요');
+ 		  return false;
+ 		}
+		if(!fm.Intro.value){
+		  alert('자기소개를 입력하세요');
+		  fm.Intro.focus();
+		  return false;
+		}
+		var val=fm.name.value;
+		$.cookie('name', val, {expires: 2});
+		return true;
+	  }
+ </script>
+ </head>
+
+ <BODY> 
+  <P ALIGN="center"> 
+    <FONT SIZE="6">간단한 회원 정보 입력 양식</FONT> 
+  </P> 
+  <FORM ACTION="result.html" name="fm" onsubmit="return oncheck()">   
+	<TABLE CELLPADDING="8">      
+	  <TR>   
+	   <TD> 이름 </TD>   
+	   <TD> <INPUT TYPE="text" NAME="name" SIZE="10"></TD> 
+	   </TR> <TR>   <TD> 암호 </TD>   
+	   <TD> <INPUT TYPE="password" NAME="password" SIZE="10"></TD> 
+	  </TR> 
+	  <TR>   
+	   <TD> 전화번호 </TD>   
+	   <TD> <SELECT NAME="tel1">     
+			   <OPTION SELECTED> 010</OPTION>     
+			   <OPTION> 02</OPTION>     
+			   <OPTION> 053</OPTION>     
+			   <OPTION> 011</OPTION>     
+		    </SELECT>
+		   - <INPUT NAME="tel2" SIZE="4" maxlength=4>
+		   - <INPUT NAME="tel3" SIZE="4" maxlength=4> </TD> 
+	  </TR>
+
+	  <TR>   
+	   <TD> 직업 </TD>   
+	   <TD> 
+	     <SELECT SIZE="1" NAME="job">     
+	       <OPTION SELECTED> 학생</OPTION>     
+		   <OPTION> 회사원</OPTION>     
+		   <OPTION> 자영업</OPTION>     
+		   <OPTION> 기타</OPTION>     
+		 </SELECT> </TD> 
+	  </TR> 
+	  <TR>   
+	   <TD> 성별 </TD>   
+	   <TD> <INPUT TYPE="radio" NAME="gender" VALUE="male">남자&nbsp;&nbsp;       
+	        <INPUT TYPE="radio" NAME="gender" VALUE="female">여자 </TD> 
+	  </TR>
+	  <TR>   
+	   <TD> 취미 </TD>   
+	   <TD> <INPUT TYPE="checkbox" NAME="hobby" VALUE="baduk">바둑&nbsp;&nbsp;     
+	        <INPUT TYPE="checkbox" NAME="hobby" VALUE="game">게임&nbsp;&nbsp;     
+			<INPUT TYPE="checkbox" NAME="hobby" VALUE="fishing">낚시&nbsp;&nbsp;     
+			<INPUT TYPE="checkbox" NAME="hobby" VALUE="reading">독서 </TD>
+	  </TR> 
+	  <TR>   
+	   <TD> 자기 소개하는 글</TD>   
+	   <TD> <TEXTAREA ROWS="3" COLS="60" NAME="Intro" PLACEHOLDER="자기를 소개하는 글을 쓰세요"></textarea></TD> 
+	  </TR>
+	  <TR>   
+	   <TD COLSPAN="2" ALIGN="center" id="last"> <INPUT TYPE="submit" VALUE="등록하기">&nbsp;&nbsp;     
+	      <INPUT TYPE="reset" VALUE="취소하기"> </TD> 
+	  </TR> 
+	</TABLE> 
+  </FORM>
+  
+ </BODY> 
+</html>
