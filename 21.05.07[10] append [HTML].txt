@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>append</title>
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('#b1').click(function(){
+				var str1 = $('#t1').val();
+				$('#t2').append($('<li></li>').html(str1));
+			});
+		});
+	</script>
+</head>
+<body>
+	여행하고 싶은 지역 : <input id = "t1" type = "text"/>
+	<button id = "b1">추가</button>
+	<ul id = "t2"></ul>
+</body>
+</html>
+
+--------------------------------------------
+[입력 후 초기화]
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>append</title>
+	<script src = 'https://code.jquery.com/jquery-3.3.1.js'></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('#b1').click(function(){
+				var str1 = $('#t1').val();
+				$('#t2').append($('<li></li>').html(str1));
+				var str1 = $('#t1').val('');
+			});
+		});
+	</script>
+</head>
+<body>
+	여행하고 싶은 지역 : <input id = "t1" type = "text"/>
+	<button id = "b1">추가</button>
+	<ul id = "t2"></ul>
+</body>
+</html>
